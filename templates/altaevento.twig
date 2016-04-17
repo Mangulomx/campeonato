@@ -1,0 +1,47 @@
+{% extends "base.twig" %}
+{% block title %}<i class="fa fa-user"></i> Gestión de eventos {% endblock %}
+{% block content %}
+    <div class="panel panel-default">
+        <div class="panel panel-heading">
+            <h3 class="panel-title">Alta evento</h3>
+        </div>
+        <div class="panel panel-body">
+            {% set tematicas = ['AGRICULTURA','DEPORTE','OCIO','CULTURA'] %}
+            {% if flash['error'] %}
+                {% for error in flash['error'] %}
+                    <div class="alert alert-info">{{ error }}</div>
+                {% endfor %}
+            {% endif %}
+            <form role="form" id="form_evento" action="{{ urlFor('AltaEvento') }}" class="form_horizontal" method="POST">
+                <fieldset>
+                <legend>Alta nuevo evento</legend>
+                <div class="form-group">
+                    <label class="col-md-4 col-xs-4 control-label" for="selectEvento">Seleccione evento</label>
+                    <div class="col-md-5 col-xs-5">
+                        <select name="selectEvento" class="form-control selectEvento">
+                            <option value="-1">Seleccione evento</option>  
+                            {% for i, tematica in tematicas %}
+                            <option value={{ i }} {%if tematica == tematicas[evento['id_olimpiada']] %} selected=true {% endif %}>{{ tematica }}</option>
+                            {% endfor %}
+                        </select>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-md-4 col-xs-4 control-label" for="inputtematica">Temática</label>
+                    <div class="col-md-5 col-xs-5">
+                        <input id="inputtematica" name="inputtematica" placeholder="Introduce la temática para el evento deportivo.." class="form-control input-md required" type="text">
+                    </div>
+                </div>
+                <br/>
+                <div class="form-group text-center">
+                    <div class="col-md-8 col-md-offset-2">
+                        <button type="submit" id="create-evento" name="create-evento" class="btn-default btn-success">crear evento</button>
+                        <button type="reset" id="limpiar" name="limpiar" class="btn btn-primary">limpiar</button>
+                    </div>
+                </div>
+                </fieldset>
+            </form>
+        </div>
+    </div>
+{% endblock %}
+

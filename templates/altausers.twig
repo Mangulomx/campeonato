@@ -1,0 +1,58 @@
+{% extends 'base.twig' %}
+{% block title %}<i class="fa fa-user"></i> Gestión de usuarios {% endblock %}
+{% block content %}
+    <div class="panel panel-default">
+        <div class="panel panel-heading">
+            <h3 class="panel-title">Alta usuario</h3>
+        </div>
+        <div class="panel panel-body">
+            {% if flash['error'] %}
+                {% for error in flash['error'] %}
+                    <div class="alert alert-info">{{ error }}</div>
+                {% endfor %}
+            {% endif %}
+            {% if flash['success']  %}
+                <div class="alert alert-success">{{ flash['success'] }} </div>
+            {% endif %}
+            <form id="form_user" action="{{ urlFor('altausers') }}" method="POST" class="form-horizontal">
+                <fieldset>
+                    <legend>Introduzca los datos de acceso</legend>
+                    <div class="form-group">
+                        <label class="col-md-4 control-label" for="inputuser">Nombre de usuario</label>
+                        <div class="col-md-5">
+                             <input id="inputuser" name="inputuser" placeholder="Nombre del usuario..." class="form-control input-md required" type="text" />
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-md-4 control-label" for="inputpassword">Contraseña</label>
+                        <div class="col-md-5">
+                            <input type="password" id="inputpassword" name="inputpassword" placeholder="Introduce la contraseña..." class="form-control input-md required" type="text" />
+                        </div>    
+                    </div>
+                    <div class="form-group">
+                        <label class="col-md-4 control-label" for="inputuser">Confirmar Contraseña</label>
+                        <div class="col-md-5">
+                            <input type="password" id="inputpassword1" name="inputpassword1" placeholder="Introduce la contraseña..." class="form-control input-md required" type="text" />
+                        </div>    
+                    </div>
+                    <div class="form-group">
+                        <label class="col-md-4 control-label" for="inputemail">Email</label>
+                        <div class="col-md-5">
+                            <input id="inputemail" name="inputemail" placeholder="Introduce el email..." class="form-control input-md required" type="text" />
+                        </div>    
+                    </div>
+                    <div class="form-group">
+                        <label class="col-md-4 control-label" for="es_admin">¿Es administrador?</label>
+                            <div class="checkbox col-md-5">
+                                <input type="checkbox" name="es_admin" id="es_admin" value="1">
+                            </div>    
+                    </div>  
+                    <div class="form-group text-center">
+                        <button type="submit" id="create-user" name="create-user" class="btn btn-success">Alta usuario</button>
+                        <button type="reset" id="limpiar" name="limpiar" class="btn btn-primary">limpiar</button>    
+                    </div>
+                </fieldset>
+            </form>
+        </div>
+    </div>
+{% endblock %}

@@ -1,0 +1,13 @@
+
+<div class="col-lg-4 col-md-4 col-xs-4">
+    <div class="dropdown menu col-lg-9 col-md-9 col-xs-9">
+        <ul class="nav nav-pills nav-stacked">
+            {% if authorized %}
+            <li><a tabindex="-1" href="{{ urlFor('userList') }}">GESTION DE USUARIOS</a></li>
+            {% endif %}
+            <li><a href="{{ urlFor('participantesList') }}">GESTION DE PARTICIPANTES</a></li>
+            <li><a href="{{ urlFor('eventosList') }}">GESTION DE EVENTOS</a></li>
+        </ul>
+    </div>
+</div>
+

@@ -1,0 +1,73 @@
+{% extends 'base.twig' %}
+{% block title %}<i class="fa fa-user"></i> Gestión de participantes {% endblock %}
+{% block content %}
+    <div calss="panel panel-default">
+        <div class="panel panel-heading">
+            <h3>Alta participante</h3>
+        </div>
+        <div class="panel panel-body">
+            {% if flash['error'] %}
+            <div class="alert alert-info">
+                {% for error in flash['error'] %}
+                  {{ error }}
+                {% endfor %}
+            </div>
+            {% endif %}
+            {% if flash['success']  %}
+                <div class="alert alert-success">{{ flash['success'] }} </div>
+            {% endif %}
+            <form id="form_participante" action="{{ urlFor('AltaParticipante') }}" method="POST" class="form-horizontal">
+                <fieldset>
+                    <legend>Alta nuevo participante</legend>
+                    <div class="form-group">
+                        <label class="col-md-4 control-label" for="nieP">Nie participante</label>
+                        <div class="col-md-5">
+                            <input id="nieP" name="nieP" placeholder="Nie del participante..." class="form-control input-md" type="text" />
+                        </div>    
+                    </div>
+                    <div class="form-group">
+                        <label class="col-md-4 control-label" for="nombreP">Nombre</label>
+                        <div class="col-md-5">
+                            <input id="nombreP" name="nombreP" placeholder="Introduce el nombre del participante..." class="form-control input-md required" type="text" />
+                        </div>    
+                    </div>
+                    <div class="form-group">
+                        <label class="col-md-4 control-label" for="apellidoP">Apellidos</label>
+                        <div class="col-md-5">
+                            <input id="apellidoP" name="apellidoP" placeholder="Introduce los apellidos..." class="form-control input-md required" type="text" />
+                        </div>    
+                    </div>
+                    <div class="form-group">
+                        <label class="col-md-4 control-label" for="telefonoP">Teléfono</label>
+                        <div class="col-md-5">
+                            <input id="telefonoP" name="telefonoP" maxlength ="9" placeholder="Introduce el teléfono..." class="form-control input-md" type="text" />
+                        </div>    
+                    </div>
+                    <div class="form-group">
+                        <label class="col-md-4 control-label" for="fechaNP">Fecha de Nacimiento</label>
+                            <div class="checkbox col-md-5">
+                                <input type="date" name="fechaNP">
+                            </div>    
+                    </div>
+                    <div class="form-group">
+                        <label class="col-md-4 control-label" for="provinciaP">Provincia</label>
+                            <div class="checkbox col-md-5">
+                                <input type="text" name="provinciaP" placeholder="Introduce la provincia..." class="form-control input-md required">
+                            </div>    
+                    </div>
+                    <div class="form-group">
+                        <label class="col-md-4 control-label" for="localidadP">Localidad</label>
+                            <div class="checkbox col-md-5">
+                                <input type="text" name="localidadP" placeholder="Introduce la localidad..." class="form-control input-md required">
+                            </div>    
+                    </div>
+                    <div class="form-group text-center">
+                        <button type="submit" id="create-participante" name="create-participante" class="btn btn-success">Alta participante</button>
+                        <button type="reset" id="limpiar" name="limpiar" class="btn btn-primary">limpiar</button>    
+                    </div>
+                    
+                </fieldset>
+            </form>
+        </div>
+    </div>    
+{% endblock %}

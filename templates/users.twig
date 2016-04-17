@@ -1,0 +1,60 @@
+{% extends "base.twig" %}
+{% block title %} Gestión de usuarios {% endblock title %}
+{% block content %}
+    <div class="panel panel-default">
+        <div class="panel-heading">
+            <h3 class="panel-title"><i class="fa fa-user"></i> Gestión de usuarios</h3>
+        </div>
+    </div>
+    <div class="panel-body">
+        {% if flash['error'] %}
+            <div class="alert alert-danger">
+                {% for error in flash['error'] %}
+                    {{ error }}
+                {% endfor %}
+            </div>
+        {% endif %}
+        <form role="form" class="form-horizontal" onsubmit="return getcheckBoxValues();return false;" action="{{ urlFor('userDelete') }}" method="POST">
+        {% if is_admin %}
+            <a href="{{ urlFor('altausers') }}" class="btn btn-primary pull-right"><i class="fa fa-plus"></i> Alta usuario</a>
+        {% endif %}
+        <h2>Listado de usuarios</h2>
+        {% if users %}
+            <table class="table table-striped">
+                <thead>
+                    <tr>
+                        <th>Seleccionar</th>
+                        <th>#</th>
+                        <th>Nombre de usuario</th>
+                        <th>Email</th>
+                        <th>Administrador</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for user in users %}
+                    <tr>
+                        <td class="text-center"><input type="checkbox" name="rusuario[]" value="{{ user['id'] }}" id="rusuario[]"/></td>
+                        <td class="text-center">{{ user.id }} </td>
+                        <td class="text-center">{{ user.username }} </td>
+                        <td class="text-center">{{ user.email }} </td>
+                        <td class="text-center">{% if user.admin == 1 %} SI {%else%} NO {% endif %}</td>
+                        {% if is_admin %}
+                            <td><a href="#" class="btn btn-primary" role="button"><i class="fa fa-pencil fa-fw"></i> Modificar</a></td>
+                        {% endif %}
+                    </tr>        
+                    {% endfor %}
+                </tbody>
+                <tfooter>
+                {% if is_admin %}
+                    <tr>
+                        <td><button type="submit" class="btn btn-danger text-center" name="eliminar"><i class="fa fa-trash-o fa-fw"></i> Eliminar</button></td>
+                    </tr>
+                {% endif %}
+                </tfooter>
+            </table>
+        {% else %}
+            <div class="alert alert-info">No hay usuarios para mostrar</div>
+        {% endif %}
+        </form>
+    </div>
+{% endblock content %}

@@ -1,0 +1,23 @@
+{% extends "base.twig" %}
+
+{% block title %} {{ title }} {% endblock title %}
+{% block content %}
+<section class="container">
+    <section class="login-form">
+        <form method="post" action="{{ url }}" role="login">
+            <img src="/images/logo.jpeg" class="img-responsive" alt="" />
+            {% if flash['error'] %}
+                <div class="alert alert-danger">
+                    {{ flash['error'] }}
+                </div>
+            {% endif %}
+   
+            <input type="text" name="txt_uname" placeholder="Introduce el usuario..." required class="form-control input-lg" />
+            <input type="password" name="txt_password" placeholder="Introduce la contraseña..." required class="form-control input-lg" />
+            
+            <button type="submit" name="entrar" class="btn btn-lg btn-primary btn-block">Entrar</button>
+            
+	</form>
+    </section>
+</section>
+{% endblock content %}

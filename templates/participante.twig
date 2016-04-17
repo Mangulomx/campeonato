@@ -1,0 +1,69 @@
+{% extends "base.twig" %}
+{% block title %} Gestion de participantes {% endblock %}
+{% block content %}
+    <div class="panel panel-default">
+        <div class="panel-heading">
+            <h3 class="panel-title"><i class="fa fa-user"></i> Gestión de participantes</h3>
+        </div>
+    </div>
+    <div class="panel-body">
+        {% if flash['error'] %}
+            <div class="alert alert-danger">
+                {% for error in flash['error'] %}
+                    {{ error }}
+                {% endfor %}
+            </div>
+        {% endif %}
+        <form id = "form_participanteL" role="form" onsubmit="return getcheckBoxValues();return false;" action="{{ urlFor('participanteDelete') }}" class="form-horizontal" method="POST">
+            {% if is_admin %}
+                <a href="{{ urlFor('AltaParticipante') }}" class="btn btn-primary pull-right"><i class="fa fa-plus"></i> Alta participante</a>
+            {% endif %}
+            <h2>Listado de participantes</h2>
+            {% if participantes %}
+            <table class="table table-striped col-md-8">
+                <thead>
+                    <tr>
+                        <th class='text-center'>Seleccionar</th>
+                        <th class='text-center'>Nie</th>
+                        <th class='text-center'>Nombre</th>
+                        <th class='text-center'>Apellidos</th>
+                        <th class='text-center'>Teléfono</th>
+                        <th class='text-center'>Fecha de nacimiento</th>
+                        <th class='text-center'>Provincia</th>
+                        <th class='text-center'>Localidad</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for participante in participantes %}
+                        <tr>
+                            <td class="text-center"><input type="checkbox" name="chkparticipante[]" value="{{ participante['id'] }}" id="chkparticipante[]"></td>
+                            <td class="text-center">{{ participante['nieparticipante'] }}</td>
+                            <td class="text-center">{{ participante['nombre'] }}</td>
+                            <td class="text-center">{{ participante['apellidos'] }}</td>
+                            <td class="text-center">{{ participante['telefono'] }}</td>
+                            <td class="text-center">{{ participante['f_nacimiento'] }}</td>
+                            <td class="text-center">{{ participante['provincia'] }}</td>
+                            <td class="text-center">{{ participante['localidad'] }}</td>
+                            {# Acciones para las botones #}
+                            {% if is_admin %}
+                            <td>
+                                <a href="{{ urlFor('editParticipante', {'id': participante['id']}) }}" class="btn btn-primary" role="button"><i class="fa fa-pencil fa-fw"></i>Editar</a>
+                            </td>
+                            {% endif %}
+                        </tr>
+                    {% endfor %}
+                </tbody>
+                <tfooter>
+                    {% if is_admin %}
+                        <tr>
+                            <td><button type="submit" class="btn btn-danger text-center" name="eliminar"><i class="fa fa-trash-o fa-fw"></i> Eliminar</button>
+                        </tr>
+                    {% endif %}
+                </tfooter>
+            </table>
+            {% else %}
+                <div class="alert alert-info">No hay participantes para mostrar</div>
+            {% endif %}
+        </form>
+    </div>
+{% endblock %}

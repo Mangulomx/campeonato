@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project-private xmlns="http://www.netbeans.org/ns/project-private/1">
+    <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
+    <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
+        <group>
+            <file>file:/var/www/html/olimpiada/templates/altausers.twig</file>
+            <file>file:/var/www/html/olimpiada/templates/evento.twig</file>
+            <file>file:/var/www/html/olimpiada/public/js/main.js</file>
+            <file>file:/var/www/html/olimpiada/routes/participantes.php</file>
+            <file>file:/var/www/html/olimpiada/templates/altaevento.twig</file>
+            <file>file:/var/www/html/olimpiada/routes/users.php</file>
+            <file>file:/var/www/html/olimpiada/public/css/main.css</file>
+            <file>file:/var/www/html/olimpiada/public/install/functions.php</file>
+            <file>file:/var/www/html/olimpiada/templates/altaParticipante.twig</file>
+            <file>file:/var/www/html/olimpiada/templates/participante.twig</file>
+            <file>file:/var/www/html/olimpiada/routes/home.php</file>
+            <file>file:/var/www/html/olimpiada/templates/base.twig</file>
+            <file>file:/var/www/html/olimpiada/public/install/instalador.php</file>
+            <file>file:/var/www/html/olimpiada/templates/users.twig</file>
+            <file>file:/var/www/html/olimpiada/composer.lock</file>
+            <file>file:/var/www/html/olimpiada/templates/home.twig</file>
+            <file>file:/var/www/html/olimpiada/routes/eventos.php</file>
+            <file>file:/var/www/html/olimpiada/composer.json</file>
+            <file>file:/var/www/html/olimpiada/templates/sidebar.twig</file>
+            <file>file:/var/www/html/olimpiada/public/index.php</file>
+        </group>
+    </open-files>
+</project-private>

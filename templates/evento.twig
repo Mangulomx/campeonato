@@ -1,0 +1,60 @@
+{% extends "base.twig" %}
+{% block title %} Gestión de eventos {% endblock title %}
+{% block content %}
+    <div class="panel panel-default">
+        <div class="panel-heading">
+            <h3 class="panel-title"><i class="fa fa-user"></i> Gestión de eventos</h3>
+        </div>
+    </div>
+    <div class="panel-body">
+        {% set tematica=['AGRICOLA','DEPORTE','CULTURAL','OCIO'] %}
+        {% if flash['error'] %}
+            <div class="alert alert-danger">
+                {% for error in flash['error'] %}
+                    {{ error }}
+                {% endfor %}
+            </div>
+        {% endif %}
+        <form role="form" class="form-horizontal" onsubmit="return getcheckBoxValues();return false;" action="{{ urlFor('EventoDelete') }}" method="POST">
+        {% if is_admin %}
+            <a href="{{ urlFor('AltaEvento') }}" class="btn btn-primary pull-right"><i class="fa fa-plus"></i> Alta evento</a>
+        {% endif %}
+        <h2>Listado de eventos</h2>
+        {% if eventos %}
+            <table class="table table-striped">
+                <thead>
+                    <tr>
+                        <th>Seleccionar</th>
+                        <th># evento</th>
+                        <th>Temática</th>
+                        <th>Actividad temática</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for evento in eventos %}
+                    <tr>
+                        <td class="text-center"><input type="checkbox" name="revento[]" value="{{ evento['id'] }}" id="revento[]"/></td>
+                        <td class="text-center">{{ evento.id }} </td>
+                        <td class="text-center">{{ tematica[evento.id_olimpiada - 1] }} </td>
+                        <td class="text-center">{{ evento.actividad_tematica }} </td>
+                        {% if is_admin %}
+                            <td><a href="{{ urlFor('EditEvento', {'id': evento.id}) }}" class="btn btn-primary" role="button"><i class="fa fa-pencil fa-fw"></i> Modificar</a></td>
+                        {% endif %}
+                    </tr>        
+                    {% endfor %}
+                </tbody>
+                <tfooter>
+                {% if is_admin %}
+                    <tr>
+                        <td><button type="submit" class="btn btn-danger text-center" name="eliminar"><i class="fa fa-trash-o fa-fw"></i> Eliminar</button></td>
+                    </tr>
+                {% endif %}
+                </tfooter>
+            </table>
+        {% else %}
+            <div class="alert alert-info">No hay eventos para mostrar</div>
+        {% endif %}
+        </form>
+    </div>
+{% endblock content %}
+

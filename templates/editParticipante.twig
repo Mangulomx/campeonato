@@ -1,0 +1,62 @@
+{% extends 'base.twig' %}
+{% block title %} Gestión de participantes {% endblock %}
+{% block content %}
+    <div class="panel panel-default">
+        <div class="panel panel-heading">
+            <h3>Gestión de participantes</h3>
+        </div>
+        <div class="panel panel-body">
+        <fieldset>
+            <legend>Editar participante</legend>
+            <form role="form" class="form-horizontal" method="POST">
+                <div class="form-group">
+                    <label class="col-md-4 col-xs-4 control-label" for="inputnie">Nie del participante</label>
+                    <div class="col-md-5 col-xs-5">
+                        <input id="inputnie" name="inputnie" value="{{ participante['nieparticipante'] }}" class="form-control" type="text">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-md-4 col-xs-4 control-label" for="inputnameP">Nombre</label>
+                    <div class="col-md-5 col-xs-5">
+                        <input id="inputnameP" name="inputnameP" value="{{ participante['nombre'] }}" class="form-control" required type="text">
+                    </div>
+                </div>
+                <div class="form-group">
+                        <label class="col-md-4 control-label" for="inputapellidoP">Apellidos</label>
+                        <div class="col-md-5">
+                            <input id="inputapellidoP" name="inputapellidoP" value="{{ participante['apellidos'] }}" placeholder="Introduce los apellidos..." class="form-control input-md required" type="text" />
+                        </div>    
+                </div>
+                <div class="form-group">
+                    <label class="col-md-4 control-label" for="inputtelefonoP">Teléfono</label>
+                    <div class="col-md-5">
+                        <input id="inputtelefonoP" name="inputtelefonoP" maxlength ="9" value="{{ participante['telefono'] }}" placeholder="Introduce el teléfono..." class="form-control input-md" type="text" />
+                    </div>    
+                </div>
+                <div class="form-group">
+                    <label class="col-md-4 control-label" for="inputfechaNP">Fecha Nacimiento</label>
+                    <div class="checkbox col-md-5">
+                        <input type="date" name="inputfechaNP" value="{{ participante['f_nacimiento'] }}">
+                    </div>    
+                </div>
+                <div class="form-group">
+                    <label class="col-md-4 control-label" for="inputprovinciaP">Provincia</label>
+                    <div class="checkbox col-md-5">
+                        <input type="text" name="inputprovinciaP" value="{{ participante['provincia'] }}" placeholder="Introduce la provincia..." class="form-control input-md required">
+                    </div>    
+                </div>
+                <div class="form-group">
+                    <label class="col-md-4 control-label" for="localidadP">Localidad</label>
+                    <div class="checkbox col-md-5">
+                        <input type="text" name="localidadP" value="{{ participante['localidad'] }}" placeholder="Introduce la localidad..." class="form-control input-md required">
+                    </div>    
+                </div>
+                <div class="form-group text-center">
+                        <button type="submit" id="edit-participante" name="edit-participante" class="btn btn-success">Editar participante</button>
+                        <button type="reset" id="limpiar" name="limpiar" class="btn btn-primary">limpiar</button>    
+                </div>
+            </form>
+        </fieldset>
+        </div>       
+    </div>
+{% endblock %}

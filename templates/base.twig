@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>{% block title %} Inicio {% endblock title %} &mdash; OlimpiadaFc</title>
+        <meta name="description" content="Aplicación para gestión de inscripciones en torneos celebrados por fundación los carriles">
+        <link rel="stylesheet" href="/libs/font-awesome/css/font-awesome.min.css">
+        <link rel="stylesheet" href="/libs/bootstrap/css/bootstrap.min.css">
+        <link rel="stylesheet" href="/css/main.css">
+    </head>
+    <body>
+        <header>
+        {% if logged_in %}
+        <nav class="navbar navbar-default navbar-static-top" role="navigation">
+            <div class="container">
+                <div class="navbar-header">
+                    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-ex6-collapse">
+                        <span class="sr-only">Desplegar navegación</span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+                    <a class="navbar-brand" href="#">Olimpiadas FC</a>
+                </div>
+                <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                    <ul class="nav navbar-nav navbar-right">
+                        {% if logged_in %}
+                        <li><a href="{{ urlFor('logout') }}">Salir</a></li>
+                        {% else %}
+                        <li><a href="{{ urlFor('login') }}">Entrar</a></li>
+                        {% endif %}
+                    </ul>
+                </div>
+            </div>   
+        </nav>
+        {% endif %}
+        </header>
+        <main>
+        {% if logged_in %}
+            <div class="container limited-width">
+                <section>
+                    <nav>
+                        <ol class="breadcrumb">
+                            <li><a href="#">Inicio</li>
+                        </ol>
+                    </nav>
+                </section>
+            </div>
+        {% endif %}
+       
+            {% block content %}
+            {% endblock content %}
+        </main>
+        <footer>
+            {% block footer %}
+            {% endblock footer %}
+        </footer>
+        <script src="/js/jquery-1.12.0.min.js"></script>
+        <script src="/libs/bootstrap/js/bootstrap.min.js"></script>
+        <script src="/js/jquery.validate.js"></script>
+        <script src="/js/main.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.10.0/js/bootstrap-select.min.js"></script>
+    </body>
+</html>
